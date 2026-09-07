@@ -1,0 +1,1550 @@
+@font-face {
+  font-family: Galmuri;
+  src: url("/fonts/Galmuri11.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  font-family: Galmuri, "Apple SD Gothic Neo", sans-serif;
+  color: #e9e6d7;
+  background: #111a20;
+  font-synthesis: none;
+  --gold: #c7a45d;
+  --red: #973d42;
+  --paper: #e4dbbc;
+  --ink: #172127;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #111a20 url("/art/shrine.png") center/cover fixed;
+}
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #0a151bea;
+  z-index: -1;
+}
+button,
+a,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+select {
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  border: 1px solid #7b7b70;
+  background: #202b30;
+  padding: 10px 14px;
+  border-radius: 0;
+  cursor: pointer;
+}
+button:hover:not(:disabled) {
+  background: #35424a;
+  border-color: #ead99b;
+}
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+canvas:focus-visible {
+  outline: 3px solid #ffcf75;
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+kbd {
+  font: 10px Galmuri;
+  color: #bdbbac;
+  margin-left: 6px;
+}
+button.primary {
+  border: 1px solid #e8bf7a;
+  background: #a44743;
+  color: #fff4d8;
+  padding: 14px 20px;
+  box-shadow: inset 0 0 0 3px #762e32;
+  min-height: 47px;
+}
+button.primary:hover:not(:disabled) {
+  background: #b45449;
+}
+button.primary:disabled {
+  background: #574841;
+  box-shadow: none;
+  opacity: 0.65;
+}
+button.primary span {
+  margin-left: 32px;
+}
+button.text-button {
+  border: 0;
+  background: transparent;
+  padding: 8px 4px;
+  color: #c9c7b8;
+  font-size: 11px;
+}
+button.text-button:hover:not(:disabled) {
+  background: transparent;
+  color: #fff1cc;
+}
+.game-shell {
+  max-width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #9b845c;
+  background: #162127;
+  box-shadow: 0 10px 40px #0007;
+}
+.masthead {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px double #a08858;
+  background: #152028;
+}
+.brand {
+  font-family: "Songti SC", "Batang", serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #dfc88a;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.brand span {
+  font-family: Galmuri;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+.brand small {
+  font: 8px Galmuri;
+  letter-spacing: 1px;
+  color: #8b999a;
+  margin-left: 6px;
+}
+.masthead nav {
+  display: flex;
+  gap: 8px;
+}
+.masthead nav button {
+  padding: 8px 10px;
+  font-size: 10px;
+  border-color: #526068;
+}
+footer {
+  padding: 15px 24px;
+  display: flex;
+  justify-content: space-between;
+  color: #829194;
+  font-size: 9px;
+  border-top: 1px solid #4a5657;
+}
+.overline {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #c5ac70;
+  margin: 0 0 20px;
+}
+.title-scene {
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  background: #152933 url("/art/shrine.png") center/cover;
+}
+.title-scene:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #0d1c29f0 0%,
+    #172835ad 40%,
+    #1c2c3320 100%
+  );
+}
+.title-copy {
+  position: relative;
+  z-index: 2;
+  padding: 66px 0 0 65px;
+}
+.title-copy h1 {
+  font-family: "Songti SC", "Batang", serif;
+  font-size: 78px;
+  line-height: 1.05;
+  letter-spacing: -5px;
+  font-weight: 900;
+  margin: 0;
+  color: #f0e5c7;
+  text-shadow: 3px 4px #16222b;
+}
+.title-copy h1 span {
+  display: block;
+  font: 15px Galmuri;
+  letter-spacing: 0;
+  margin-top: 23px;
+  color: #cfb475;
+}
+.title-copy > p:not(.overline) {
+  font-size: 12px;
+  line-height: 1.95;
+  margin: 26px 0 23px;
+  color: #b9c6c4;
+}
+.title-copy .title-start {
+  display: block;
+  width: 265px;
+  text-align: left;
+  margin-bottom: 6px;
+}
+.title-figures {
+  position: absolute;
+  inset: 0 0 0 37%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.title-warrior {
+  position: absolute;
+  bottom: -50px;
+  width: 400px;
+  height: 655px;
+  overflow: hidden;
+  mask-image: linear-gradient(#000 88%, transparent);
+}
+.title-warrior.first {
+  left: 8%;
+  transform: rotate(-6deg);
+}
+.title-warrior.last {
+  right: -12%;
+  height: 700px;
+  opacity: 0.9;
+}
+.portrait {
+  background-image: url("/art/portraits.png");
+  background-repeat: no-repeat;
+  background-size: 400% auto;
+  background-position-y: 0;
+}
+.portrait-0 {
+  background-position-x: 0%;
+}
+.portrait-1 {
+  background-position-x: 33.333%;
+}
+.portrait-2 {
+  background-position-x: 66.666%;
+}
+.portrait-3 {
+  background-position-x: 100%;
+}
+.title-warrior .portrait {
+  height: 100%;
+  background-size: 400% 100%;
+  mix-blend-mode: lighten;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 15%,
+    #000 88%,
+    transparent
+  );
+}
+.vertical-label {
+  position: absolute;
+  writing-mode: vertical-rl;
+  right: 35px;
+  top: 70px;
+  letter-spacing: 6px;
+  font-size: 12px;
+  color: #dfd2ad;
+}
+.title-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #a0885866;
+  padding: 17px 40px;
+  background: #132632bb;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #b5c4bf;
+}
+.title-bottom span {
+  margin: 0 44px;
+}
+.selection {
+  padding: 36px 36px 24px;
+  background:
+    linear-gradient(#152129d9, #152129f9),
+    url("/art/shrine.png") center/cover;
+}
+.section-intro h1 {
+  font:
+    40px "Batang",
+    "Songti SC",
+    serif;
+  margin: 0;
+  color: #e5d6a6;
+}
+.section-intro p:last-child {
+  color: #aebcba;
+  font-size: 12px;
+  margin: 12px 0 24px;
+}
+.fighters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.fighter-option {
+  height: 415px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #6c736b;
+  background: #263b40;
+  text-align: left;
+}
+.fighter-option .portrait {
+  position: absolute;
+  inset: 0;
+  background-size: 400% 100%;
+  transition: filter 0.15s;
+  filter: saturate(0.75);
+}
+.fighter-option.chosen {
+  outline: 3px solid #cdaa63;
+  outline-offset: 3px;
+}
+.fighter-option.chosen .portrait {
+  filter: saturate(1.15);
+}
+.fighter-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 17px 17px;
+  background: linear-gradient(transparent, #0c1922 42%);
+}
+.fighter-name small {
+  display: block;
+  font-size: 9px;
+  color: #ccbd99;
+}
+.fighter-name strong {
+  display: block;
+  font-size: 26px;
+  margin: 8px 0 11px;
+}
+.fighter-name em {
+  font-size: 9px;
+  font-style: normal;
+  color: #b7c3bb;
+}
+.select-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+.select-bottom label {
+  font-size: 11px;
+  margin-right: 14px;
+}
+.select-bottom p {
+  font-size: 11px;
+  color: #9caca9;
+}
+.select-bottom select {
+  font-size: 11px;
+}
+.battle-hud {
+  height: 99px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  padding: 12px 24px;
+  background: #13212a;
+  border-bottom: 1px solid #957c51;
+}
+.fighter-hud {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+.fighter-hud > .portrait {
+  height: 73px;
+  width: 68px;
+  border: 2px solid #b79b5c;
+  flex-shrink: 0;
+  background-size: 400% auto;
+  background-position-y: 12%;
+  background-color: #4d4039;
+}
+.fighter-hud.enemy {
+  flex-direction: row-reverse;
+}
+.fighter-vitals {
+  flex: 1;
+  min-width: 0;
+}
+.hud-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.hud-name strong {
+  font-size: 19px;
+  color: #f2e1b5;
+}
+.hud-name small {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #b7bba9;
+}
+.meter-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  margin-top: 4px;
+}
+.meter-row > span {
+  width: 24px;
+}
+.meter-row b {
+  font-size: 12px;
+  width: 64px;
+  text-align: right;
+  font-weight: 400;
+}
+.meter-row b small {
+  font-size: 8px;
+  color: #b6b59e;
+}
+.meter-row meter {
+  width: 100%;
+  height: 15px;
+  appearance: none;
+  border: 1px solid #a4884d;
+  background: #201c21;
+}
+.meter-row meter::-webkit-meter-bar {
+  background: #261d24;
+  border: 0;
+  border-radius: 0;
+  height: 13px;
+}
+.meter-row meter::-webkit-meter-optimum-value {
+  background: #ce5d5b;
+}
+.meter-row.energy meter::-webkit-meter-optimum-value {
+  background: #c8ad58;
+}
+.meter-row meter::-moz-meter-bar {
+  background: #ce5d5b;
+}
+.meter-row.energy meter::-moz-meter-bar {
+  background: #c8ad58;
+}
+.round-medallion {
+  text-align: center;
+  line-height: 1.15;
+  border-left: 1px solid #6c6851;
+  border-right: 1px solid #6c6851;
+  margin: 0 18px;
+  color: #d9be73;
+}
+.round-medallion small {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.round-medallion strong {
+  display: block;
+  font-size: 28px;
+  font-family: "Batang", serif;
+  margin: 2px;
+}
+.round-medallion span {
+  font-size: 8px;
+  color: #a9b0a0;
+}
+.arena {
+  position: relative;
+  overflow: hidden;
+  background: #253a40;
+}
+.arena canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: manipulation;
+}
+.arena-caption {
+  position: absolute;
+  top: 13px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #edddad;
+  text-shadow: 1px 2px 2px #000;
+  pointer-events: none;
+}
+.cut-in {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 310px;
+  height: 105px;
+  background: #9b3943e0;
+  border: 1px solid #d1b37a;
+  border-left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 21px 15px 0 116px;
+}
+.cut-in .portrait {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 110px;
+  height: 110px;
+  background-size: 400% auto;
+  background-position-y: 15%;
+  transform: skew(-10deg);
+}
+.cut-in b {
+  font-size: 18px;
+}
+.cut-in span {
+  display: block;
+  font-size: 9px;
+  margin-top: 10px;
+  color: #e8d2a9;
+}
+.planning-bar {
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 90px 1fr 145px 172px;
+  gap: 18px;
+  align-items: center;
+  border-top: 3px double #a48c59;
+  border-bottom: 1px solid #5c6359;
+  background: #16252b;
+}
+.label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #d0b97e;
+}
+.direction-panel {
+  text-align: center;
+}
+.d-pad {
+  display: grid;
+  grid-template: repeat(3, 25px) / repeat(3, 25px);
+  gap: 1px;
+  justify-content: center;
+  margin-top: 6px;
+}
+.d-pad button {
+  padding: 0;
+  font-size: 16px;
+  border-color: #748478;
+  background: #253538;
+}
+.d-pad button.active {
+  background: #b54b4c;
+  border-color: #eac882;
+}
+.dir-north {
+  grid-area: 1/2;
+}
+.dir-east {
+  grid-area: 2/3;
+}
+.dir-south {
+  grid-area: 3/2;
+}
+.dir-west {
+  grid-area: 2/1;
+}
+.d-center {
+  grid-area: 2/2;
+  font: 12px Galmuri;
+  line-height: 25px;
+  color: #d4c487;
+}
+.queue-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+.queue-heading > small {
+  font-size: 8px;
+  color: #9aafac;
+}
+.queue-heading b {
+  color: #e2c37a;
+}
+.queue {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.queue-slot {
+  position: relative;
+  border: 1px solid #837c5c;
+  background: #243338;
+  min-height: 52px;
+  padding: 6px 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 1 !important;
+}
+.queue-slot > span {
+  font-size: 9px;
+  color: #e8c37e;
+  align-self: flex-start;
+}
+.queue-slot b {
+  font-size: 11px;
+  font-weight: 400;
+}
+.queue-slot em {
+  font-size: 14px;
+  color: #e2c47e;
+  font-style: normal;
+}
+.queue-slot > small {
+  font-size: 8px;
+  color: #829995;
+}
+.queue-slot.resolving {
+  border: 2px solid #f0c965;
+  background: #563b32;
+}
+.queue-slot.done {
+  opacity: 0.5 !important;
+}
+.enemy-plan {
+  border-left: 1px solid #6d7160;
+  padding-left: 17px;
+}
+.enemy-plan > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 8px;
+}
+.enemy-plan b {
+  font-size: 12px;
+  color: #bbd0ce;
+  font-weight: 400;
+}
+.enemy-plan strong {
+  font-size: 18px;
+  color: #a1cbd0;
+}
+.enemy-plan > small {
+  font-size: 8px;
+  color: #a6b1a8;
+  line-height: 1.6;
+  display: block;
+}
+.commit-panel {
+  text-align: center;
+}
+.commit-panel .commit {
+  padding: 13px 10px;
+  font-size: 12px;
+  width: 100%;
+}
+.commit kbd {
+  display: block;
+  margin: 4px 0 0;
+  color: #edcda6;
+}
+.hand {
+  padding: 17px 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 11px;
+  background: #131e25;
+}
+.action-card {
+  padding: 0;
+  border: 2px solid #927c4c;
+  background: #263331;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+  transition: border-color 0.12s;
+  min-width: 0;
+}
+.action-card:hover:not(:disabled) {
+  border-color: #efd38f;
+  background: #303b37;
+}
+.action-card:disabled {
+  opacity: 0.52;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 6px;
+  background: #293232;
+  border-bottom: 1px solid #8c7347;
+  gap: 4px;
+}
+.card-top kbd {
+  border: 1px solid #8e865f;
+  color: #ede0ad;
+  font-size: 8px;
+  padding: 2px 4px;
+  margin: 0;
+}
+.card-top strong {
+  font-size: 11px;
+}
+.card-top > span {
+  font-size: 8px;
+  color: #d3b77c;
+}
+.card-art {
+  position: relative;
+  display: block;
+  height: 82px;
+  overflow: hidden;
+  background: #a34848;
+}
+.card-art > .portrait {
+  position: absolute;
+  inset: 0;
+  background-size: 400% auto;
+  background-position-y: 20%;
+  filter: sepia(0.25);
+}
+.card-art:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #101e2930, #142329b0);
+}
+.card-art > i {
+  position: absolute;
+  right: 32px;
+  top: 8px;
+  font:
+    56px "Songti SC",
+    "Batang",
+    serif;
+  color: #f9edc7;
+  text-shadow: 2px 2px #0d2027;
+  z-index: 1;
+  font-style: normal;
+}
+.card-range {
+  position: absolute;
+  right: 5px;
+  bottom: 6px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  z-index: 2;
+}
+.card-range s {
+  border: 1px solid #f1d68a55;
+  background: #123137;
+}
+.card-range s.origin {
+  background: #d2b56d;
+}
+.card-range s.lit {
+  background: #db6870;
+}
+.card-bottom {
+  display: block;
+  padding: 8px 7px;
+  min-height: 46px;
+}
+.card-bottom > b {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #caba85;
+  display: block;
+}
+.card-bottom > small {
+  font-size: 8px;
+  line-height: 1.65;
+  display: block;
+  color: #ccd4c7;
+  margin-top: 4px;
+}
+.card-guard .card-art {
+  filter: sepia(0.3);
+}
+.card-spell .card-art {
+  filter: saturate(1.15);
+}
+.battle-status {
+  padding: 11px 23px;
+  background: #223038;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 9px;
+  color: #d1c49a;
+  line-height: 1.5;
+}
+.battle-status > span:last-child {
+  color: #9aaca9;
+  font-size: 8px;
+}
+.battle-log {
+  padding: 12px 24px;
+  font-size: 10px;
+  color: #9db2ad;
+}
+.battle-log summary {
+  cursor: pointer;
+}
+.battle-log ol {
+  font-size: 9px;
+  line-height: 2;
+  color: #bdc5b9;
+  padding-left: 20px;
+}
+.veil {
+  position: fixed;
+  inset: 0;
+  background: #07131ade;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+}
+.modal {
+  width: min(600px, 100%);
+  max-height: 90dvh;
+  overflow: auto;
+  padding: 38px;
+  border: 3px double #bca368;
+  background: #1e2d33;
+  box-shadow: 0 14px 80px #000a;
+}
+.modal h2 {
+  font:
+    30px "Batang",
+    "Songti SC",
+    serif;
+  line-height: 1.3;
+  color: #ebd9a4;
+  margin: 0 0 20px;
+}
+.modal > p:not(.overline) {
+  font-size: 12px;
+  color: #c0cdc7;
+  line-height: 1.9;
+}
+.result-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.help ol {
+  padding-left: 23px;
+  color: #dfd0a8;
+}
+.help li {
+  padding-left: 5px;
+  margin: 18px 0;
+}
+.help li > b {
+  font-size: 12px;
+}
+.help li p {
+  font-size: 11px;
+  line-height: 1.85;
+  color: #bfc8be;
+  margin: 8px 0;
+}
+.help .fine-print {
+  font-size: 10px !important;
+  border-top: 1px solid #607269;
+  padding-top: 13px;
+}
+.help > .primary {
+  width: 100%;
+  margin-top: 10px;
+}
+.champion {
+  min-height: 610px;
+  position: relative;
+  padding: 60px;
+  text-align: center;
+  overflow: hidden;
+  background:
+    linear-gradient(#142736ad, #142736e9),
+    url("/art/shrine.png") center/cover;
+}
+.champion h1 {
+  font:
+    54px "Batang",
+    serif;
+  margin: 0 0 20px;
+  color: #e4d7ad;
+}
+.champion > .portrait {
+  width: 175px;
+  height: 250px;
+  margin: 0 auto;
+  background-size: 400% 100%;
+  border: 2px solid #a4926c;
+}
+.champion h2 {
+  font: 20px Galmuri;
+  color: #e8c58c;
+  margin-top: 23px;
+}
+.champion p:not(.overline) {
+  font-size: 12px;
+  color: #bacbc3;
+}
+.champion > div:last-child {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+@media (min-width: 1450px) {
+  .game-shell {
+    margin: 30px auto;
+  }
+}
+@media (max-width: 850px) {
+  .game-shell {
+    margin: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+  .masthead {
+    padding: 0 15px;
+    height: 58px;
+  }
+  .brand small {
+    display: none;
+  }
+  .brand {
+    font-size: 19px;
+  }
+  .brand span {
+    font-size: 13px;
+  }
+  .masthead nav {
+    gap: 4px;
+  }
+  .masthead nav button {
+    font-size: 9px;
+    padding: 8px;
+  }
+  .masthead nav kbd {
+    display: none;
+  }
+  .title-copy {
+    padding: 50px 0 0 35px;
+  }
+  .title-copy h1 {
+    font-size: 66px;
+  }
+  .title-warrior.first {
+    left: 0;
+  }
+  .title-warrior.last {
+    right: -45%;
+    opacity: 0.5;
+  }
+  .title-scene {
+    height: 610px;
+  }
+  .title-copy > p {
+    max-width: 280px;
+  }
+  .title-bottom {
+    font-size: 8px;
+  }
+  .title-bottom span {
+    margin: 0 15px;
+  }
+  .selection {
+    padding: 25px 20px;
+  }
+  .fighters {
+    gap: 10px;
+  }
+  .fighter-option {
+    height: 330px;
+  }
+  .fighter-name {
+    padding: 40px 9px 13px;
+  }
+  .fighter-name em {
+    font-size: 8px;
+  }
+  .fighter-name strong {
+    font-size: 21px;
+  }
+  .battle-hud {
+    grid-template-columns: 1fr 90px 1fr;
+    padding: 10px 13px;
+    height: 88px;
+  }
+  .fighter-hud {
+    gap: 7px;
+  }
+  .fighter-hud > .portrait {
+    width: 48px;
+    height: 58px;
+  }
+  .hud-name strong {
+    font-size: 16px;
+  }
+  .hud-name small {
+    font-size: 6px;
+  }
+  .meter-row {
+    gap: 4px;
+  }
+  .meter-row > span {
+    font-size: 7px;
+    width: 20px;
+  }
+  .meter-row b {
+    font-size: 10px;
+    width: 50px;
+  }
+  .meter-row b small {
+    font-size: 7px;
+  }
+  .round-medallion {
+    margin: 0 10px;
+  }
+  .round-medallion strong {
+    font-size: 25px;
+  }
+  .planning-bar {
+    padding: 12px;
+    grid-template-columns: 78px 1fr 145px;
+    gap: 12px;
+  }
+  .enemy-plan {
+    display: none;
+  }
+  .queue-heading > small {
+    font-size: 7px;
+  }
+  .queue-slot {
+    padding: 5px;
+    gap: 4px;
+  }
+  .queue-slot b {
+    font-size: 9px;
+  }
+  .queue-slot > small {
+    font-size: 7px;
+  }
+  .hand {
+    gap: 7px;
+    padding: 12px;
+  }
+  .card-top {
+    padding: 6px 4px;
+    flex-wrap: wrap;
+  }
+  .card-top strong {
+    font-size: 9px;
+  }
+  .card-top > span {
+    font-size: 7px;
+  }
+  .card-top kbd {
+    font-size: 7px;
+    padding: 1px 3px;
+  }
+  .card-art {
+    height: 65px;
+  }
+  .card-art > i {
+    font-size: 44px;
+    right: 21px;
+  }
+  .card-range {
+    width: 20px;
+    height: 20px;
+    right: 4px;
+  }
+  .card-bottom {
+    padding: 6px 4px;
+    min-height: 54px;
+  }
+  .card-bottom > small {
+    font-size: 7px;
+  }
+  .card-bottom > b {
+    font-size: 7px;
+  }
+  .battle-status {
+    padding: 10px 14px;
+  }
+  .battle-status > span:last-child {
+    display: none;
+  }
+  .arena-caption {
+    font-size: 8px;
+    left: 16px;
+    right: 16px;
+  }
+  .cut-in {
+    transform: scale(0.75);
+    transform-origin: left top;
+  }
+  .section-intro h1 {
+    font-size: 33px;
+  }
+}
+@media (max-width: 560px) {
+  .masthead {
+    padding: 0 10px;
+  }
+  .brand {
+    font-size: 16px;
+    gap: 4px;
+  }
+  .brand span {
+    font-size: 11px;
+  }
+  .masthead nav button {
+    font-size: 8px;
+    padding: 7px;
+  }
+  .title-scene {
+    height: 620px;
+  }
+  .title-copy {
+    padding: 42px 0 0 24px;
+  }
+  .title-copy .overline {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .title-copy h1 {
+    font-size: 60px;
+  }
+  .title-copy h1 span {
+    font-size: 11px;
+  }
+  .title-copy > p:not(.overline) {
+    font-size: 11px;
+    max-width: 240px;
+  }
+  .title-figures {
+    left: 18%;
+    opacity: 0.5;
+  }
+  .title-warrior.first {
+    left: 12%;
+    bottom: -25px;
+  }
+  .title-warrior.last {
+    display: none;
+  }
+  .title-copy .title-start {
+    width: 230px;
+    font-size: 11px;
+  }
+  .title-bottom {
+    font-size: 7px;
+    padding: 17px 10px;
+    letter-spacing: 0;
+  }
+  .title-bottom span {
+    margin: 0 12px;
+  }
+  .fighters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+  .fighter-option {
+    height: 290px;
+  }
+  .selection {
+    padding: 25px 16px;
+  }
+  .section-intro p:last-child {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+  .select-bottom {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .select-bottom > button {
+    width: 100%;
+  }
+  .battle-hud {
+    grid-template-columns: 1fr 63px 1fr;
+    padding: 9px 9px;
+    height: 80px;
+  }
+  .fighter-hud > .portrait {
+    width: 35px;
+    height: 48px;
+  }
+  .fighter-hud {
+    gap: 5px;
+  }
+  .hud-name strong {
+    font-size: 13px;
+  }
+  .hud-name small {
+    display: none;
+  }
+  .meter-row > span {
+    display: none;
+  }
+  .meter-row b {
+    font-size: 9px;
+    min-width: 28px;
+  }
+  .meter-row b small {
+    display: none;
+  }
+  .meter-row meter {
+    height: 11px;
+  }
+  .meter-row meter::-webkit-meter-bar {
+    height: 9px;
+  }
+  .round-medallion {
+    margin: 0 7px;
+  }
+  .round-medallion strong {
+    font-size: 21px;
+  }
+  .round-medallion small,
+  .round-medallion span {
+    font-size: 6px;
+  }
+  .arena {
+    min-height: 265px;
+  }
+  .arena canvas {
+    width: 660px;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 264px;
+  }
+  .arena-caption {
+    font-size: 7px;
+    letter-spacing: 0;
+    top: 10px;
+    left: 9px;
+    right: 9px;
+  }
+  .arena-caption span:last-child {
+    max-width: 115px;
+    text-align: right;
+    line-height: 1.6;
+  }
+  .planning-bar {
+    grid-template-columns: 65px 1fr;
+    gap: 10px;
+    padding: 11px 10px;
+  }
+  .direction-panel {
+    grid-area: 1/1;
+  }
+  .d-pad {
+    grid-template: repeat(3, 26px) / repeat(3, 26px);
+  }
+  .direction-panel > .label {
+    font-size: 8px;
+  }
+  .queue-panel {
+    grid-area: 1/2;
+  }
+  .queue-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .queue-heading > small {
+    font-size: 7px;
+  }
+  .queue-slot {
+    min-height: 51px;
+    flex-wrap: wrap;
+    gap: 2px 6px;
+    align-content: center;
+  }
+  .queue-slot b {
+    font-size: 8px;
+  }
+  .queue-slot > small {
+    font-size: 7px;
+  }
+  .enemy-plan {
+    display: block;
+    grid-area: 2/1/3/2;
+    padding-left: 0;
+    border: 0;
+  }
+  .enemy-plan > .label {
+    font-size: 7px;
+  }
+  .enemy-plan > div {
+    gap: 4px;
+    margin: 6px 0;
+  }
+  .enemy-plan b {
+    font-size: 8px;
+  }
+  .enemy-plan strong {
+    font-size: 11px;
+  }
+  .enemy-plan > small {
+    font-size: 6px;
+  }
+  .commit-panel {
+    grid-area: 2/2;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .commit-panel .commit {
+    font-size: 11px;
+    padding: 10px 5px;
+  }
+  .commit-panel > .text-button {
+    font-size: 8px;
+    min-width: 66px;
+  }
+  .commit kbd {
+    font-size: 8px;
+  }
+  .hand {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+  .card-top {
+    flex-wrap: nowrap;
+  }
+  .card-top strong {
+    font-size: 10px;
+  }
+  .card-art {
+    height: 72px;
+  }
+  .card-bottom {
+    min-height: 44px;
+  }
+  .card-bottom > small {
+    font-size: 7px;
+  }
+  .card-range {
+    width: 23px;
+    height: 23px;
+  }
+  .card-art > i {
+    font-size: 46px;
+    right: 26px;
+  }
+  .battle-status {
+    font-size: 8px;
+  }
+  footer {
+    font-size: 7px;
+    padding: 13px 11px;
+    gap: 10px;
+  }
+  .modal {
+    padding: 25px 22px;
+  }
+  .modal h2 {
+    font-size: 24px;
+  }
+  .modal > p:not(.overline) {
+    font-size: 11px;
+  }
+  .result-buttons {
+    gap: 8px;
+  }
+  .result-buttons button {
+    font-size: 10px;
+  }
+  .champion {
+    padding: 42px 18px;
+  }
+  .champion h1 {
+    font-size: 38px;
+  }
+  .champion h2 {
+    font-size: 16px;
+  }
+  .champion > div:last-child {
+    flex-direction: column;
+  }
+  .cut-in {
+    transform: scale(0.65);
+    top: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Atlas frames are unequal: crop each original painting, not a generic quarter. */
+.portrait {
+  background-position-x: var(--portrait-x);
+  background-size: var(--portrait-size) auto;
+}
+.fighter-option .portrait,
+.title-warrior .portrait,
+.champion > .portrait {
+  background-size: var(--portrait-size) 100%;
+}
+.fighter-hud > .portrait,
+.card-art > .portrait,
+.cut-in .portrait {
+  background-size: var(--portrait-size) auto;
+}
+@media (max-width: 560px) {
+  .arena {
+    min-height: 0;
+  }
+  .arena canvas {
+    width: 145%;
+    height: auto;
+  }
+}
+/* Battle only: keep vitals, board, timeline and six readable cards in a 720px viewport. */
+@media (min-width: 851px) and (max-height: 800px) {
+  .game-shell:has(.battle) {
+    margin: 5px auto;
+  }
+  .game-shell:has(.battle) .masthead {
+    height: 44px;
+  }
+  .battle-hud {
+    height: 74px;
+    padding: 7px 22px;
+  }
+  .fighter-hud > .portrait {
+    height: 57px;
+    width: 52px;
+  }
+  .hud-name {
+    margin-bottom: 3px;
+  }
+  .hud-name strong {
+    font-size: 16px;
+  }
+  .meter-row {
+    margin-top: 2px;
+  }
+  .round-medallion strong {
+    font-size: 22px;
+  }
+  .arena {
+    height: clamp(190px, calc(100dvh - 420px), 380px);
+  }
+  .arena canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .planning-bar {
+    padding: 7px 18px;
+    gap: 14px;
+  }
+  .d-pad {
+    grid-template: repeat(3, 20px) / repeat(3, 20px);
+    margin-top: 4px;
+  }
+  .d-pad button {
+    font-size: 14px;
+  }
+  .d-center {
+    line-height: 20px;
+  }
+  .queue-slot {
+    min-height: 47px;
+  }
+  .hand {
+    padding: 8px 18px;
+  }
+  .card-top {
+    padding: 5px 6px;
+  }
+  .card-art {
+    height: 52px;
+  }
+  .card-art > i {
+    font-size: 42px;
+    top: 1px;
+  }
+  .card-bottom {
+    min-height: 41px;
+    padding: 6px;
+  }
+  .card-bottom > small {
+    margin-top: 3px;
+  }
+  .battle-status {
+    padding: 7px 20px;
+  }
+  .battle-log {
+    padding: 7px 20px;
+  }
+  .game-shell:has(.battle) > footer {
+    display: none;
+  }
+}
