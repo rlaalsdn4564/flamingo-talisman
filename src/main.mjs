@@ -1,4 +1,5 @@
 import "./style.css";
+import { openHelp, closeHelp, canAdvanceSession } from "./session.mjs";
 import {
   CARDS,
   CHARACTERS,
@@ -37,6 +38,7 @@ const state = {
   events: [],
   paused: false,
   help: false,
+  helpWasPaused: false,
   muted: true,
   elapsed: 0,
   beatTimer: 0,
@@ -326,13 +328,11 @@ const commands = {
   },
   start: begin,
   help() {
-    state.help = true;
-    if (state.screen === "battle") state.paused = true;
+    openHelp(state);
     render();
   },
   "close-help"() {
-    state.help = false;
-    state.paused = false;
+    closeHelp(state);
     render();
   },
   sound() {
@@ -501,7 +501,7 @@ function draw() {
 function frame(now) {
   const dt = last ? Math.min(now - last, 80) : 0;
   last = now;
-  if (!state.paused && !state.help) {
+  if (canAdvanceSession(state)) {
     state.elapsed += dt;
     if (
       state.screen === "battle" &&
