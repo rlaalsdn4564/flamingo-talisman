@@ -532,7 +532,7 @@ function loadImage(src) {
     image.src = src;
   });
 }
-Promise.all([loadImage("/art/shrine.png"), loadImage("/art/warriors-key.png")])
+Promise.all([loadImage("./art/shrine.png"), loadImage("./art/warriors-key.png")])
   .then(([bg, characters]) => {
     background = bg;
     sprite = keyedSprite(characters);

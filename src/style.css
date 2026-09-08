@@ -1,6 +1,6 @@
 @font-face {
   font-family: Galmuri;
-  src: url("/fonts/Galmuri11.woff2") format("woff2");
+  src: url("./fonts/Galmuri11.woff2") format("woff2");
   font-display: swap;
 }
 :root {
@@ -18,7 +18,7 @@
 }
 body {
   margin: 0;
-  background: #111a20 url("/art/shrine.png") center/cover fixed;
+  background: #111a20 url("./art/shrine.png") center/cover fixed;
 }
 body:before {
   content: "";
@@ -160,7 +160,7 @@ footer {
   height: 650px;
   position: relative;
   overflow: hidden;
-  background: #152933 url("/art/shrine.png") center/cover;
+  background: #152933 url("./art/shrine.png") center/cover;
 }
 .title-scene:before {
   content: "";
@@ -231,7 +231,7 @@ footer {
   opacity: 0.9;
 }
 .portrait {
-  background-image: url("/art/portraits.png");
+  background-image: url("./art/portraits.png");
   background-repeat: no-repeat;
   background-size: 400% auto;
   background-position-y: 0;
@@ -289,7 +289,7 @@ footer {
   padding: 36px 36px 24px;
   background:
     linear-gradient(#152129d9, #152129f9),
-    url("/art/shrine.png") center/cover;
+    url("./art/shrine.png") center/cover;
 }
 .section-intro h1 {
   font:
@@ -916,7 +916,7 @@ footer {
   overflow: hidden;
   background:
     linear-gradient(#142736ad, #142736e9),
-    url("/art/shrine.png") center/cover;
+    url("./art/shrine.png") center/cover;
 }
 .champion h1 {
   font:
